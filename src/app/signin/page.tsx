@@ -144,16 +144,7 @@ const SigninPage = () => {
                     </button>
                   </div>
                 </div>
-                <div className="mb-6">
-                  <button
-                    className="flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 px-9 py-4 text-base font-medium text-dark transition duration-300 ease-in-out hover:border-primary hover:bg-primary hover:text-white dark:text-white"
-                  >
-                    <svg className="h-5 w-5" viewBox="0 0 24 24">
-                      {/* Google icon SVG */}
-                    </svg>
-                    Sign in with Google
-                  </button>
-                </div>
+                
                 <p className="text-center text-base font-medium text-body-color">
                   Don't you have an account?{" "}
                   <Link href="/signup" className="text-primary hover:underline">

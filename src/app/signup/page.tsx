@@ -12,9 +12,11 @@ const SignupPage = () => {
 
   const [email , setEmail] = useState("");
   const [password , setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [name , setName] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [passwordError, setPasswordError] = useState('');
 
   useEffect(() => {
     setPassword("");
@@ -23,6 +25,18 @@ const SignupPage = () => {
     setIsChecked(false);
   }, []);
 
+  const validatePasswords = () => {
+    if (password !== confirmPassword) {
+      setPasswordError('Passwords do not match');
+      return false;
+    }
+    if (password.length < 6) {
+      setPasswordError('Password must be at least 6 characters');
+      return false;
+    }
+    setPasswordError('');
+    return true;
+  };
 
   const handleSignup = async () => {
     try {
@@ -30,6 +44,16 @@ const SignupPage = () => {
 
       if (!email.trim() || !password.trim() || !name.trim()) {
         toast.error('Please fill in all fields');
+        return;
+      }
+
+      if(password !== confirmPassword){
+        toast.error('Passwords do not match');
+        return;
+      }
+
+      if(isChecked === false){
+        toast.error('Please accept the terms and conditions');
         return;
       }
 
@@ -111,6 +135,29 @@ const SignupPage = () => {
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                       onChange={(e) => setPassword(e.target.value)}
                     />
+                  </div>
+                  <div className="mb-8">
+                    <label
+                      htmlFor="confirmPassword"
+                      className="mb-3 block text-sm text-dark dark:text-white"
+                    >
+                      Confirm Password
+                    </label>
+                    <input
+                      type="password"
+                      name="confirmPassword"
+                      placeholder="Confirm your password"
+                      className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+                      onChange={(e) => {
+                        setConfirmPassword(e.target.value);
+                        if (passwordError) validatePasswords();
+                      }}
+                    />
+                    {passwordError && (
+                      <p className="mt-2 text-sm text-red-500">
+                        {passwordError}
+                      </p>
+                    )}
                   </div>
                   <div className="mb-8 flex">
                     <label
