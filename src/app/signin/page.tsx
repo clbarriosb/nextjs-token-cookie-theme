@@ -37,7 +37,7 @@ const SigninPage = () => {
       
       
       await setTimeout(() => {
-        window.location.replace('http://localhost:3000');
+        window.location.replace('/');
       }, 1500);
 
       
