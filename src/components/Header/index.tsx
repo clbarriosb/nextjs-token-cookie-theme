@@ -82,7 +82,7 @@ const Header = () => {
                       : "invisible top-[120%] opacity-0"
                   }`}
                 >
-                  <ul className="block lg:flex lg:space-x-12">
+                  {/* <ul className="block lg:flex lg:space-x-12">
                     {menuData.map((menuItem, index) => (
                       <li key={index} className="group relative">
                         {menuItem.path ? (
@@ -133,7 +133,7 @@ const Header = () => {
                         )}
                       </li>
                     ))}
-                  </ul>
+                  </ul> */}
                 </nav>
               </div>
               <div className="flex items-center justify-end pr-16 lg:pr-0">

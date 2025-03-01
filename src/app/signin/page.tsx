@@ -36,7 +36,7 @@ const SigninPage = () => {
       await checkAuth();
       
       await setTimeout(() => {
-        // window.location.replace('/');
+        window.location.href = '/';
       }, 1500);
 
       
