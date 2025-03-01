@@ -13,6 +13,7 @@ import { AuthProvider } from '@/providers/AuthProvider';
 
 import { Sidebar } from "@/components/Layouts/sidebar";
 import { useState , useEffect } from "react";
+import { usePathname , useRouter } from "next/navigation";
 // import "flatpickr/dist/flatpickr.min.css";
 // import "jsvectormap/dist/jsvectormap.css";
 
@@ -26,6 +27,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [token, setToken] = useState<string | null>(null);
+  const pathname = usePathname();
+
   useEffect(() => {
     const token = document.cookie
       .split('; ')
@@ -35,7 +38,7 @@ export default function RootLayout({
     if (token) {
       setToken(token);
     }
-  }, []);
+  }, [pathname]);
 
   return (
     <html suppressHydrationWarning lang="en">

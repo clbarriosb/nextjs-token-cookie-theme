@@ -35,9 +35,8 @@ const SigninPage = () => {
       // Check auth status after successful signin
       await checkAuth();
       
-      
       await setTimeout(() => {
-        window.location.replace('/');
+        // window.location.replace('/');
       }, 1500);
 
       
